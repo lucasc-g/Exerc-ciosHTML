@@ -1,18 +1,73 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <title>Exercício 1</title>
+    <meta charset="UTF-8">
+    <title>Tabelas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 4px;
+        }
+        h1, h2 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Exercício 1</h1>
+<h1>Tabelas</h1>
 
-  <p>
-    <a href="../../index.html">← Voltar ao Sumário</a>
-  </p>
+<h2>Célula com 2 colunas:</h2>
 
-  <p>Conteúdo do exercício 1...</p>
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+    </tr>
+    <tr>
+        <td>José das Colves</td>
+        <td>(22) 2728-6677<br>(22) 2728-7766</td>
+    </tr>
+</table>
+
+<br><br>
+
+<h2>Célula com 2 linhas:</h2>
+
+<table>
+    <tr>
+        <th>Nome:</th>
+        <td>José das Colves</td>
+    </tr>
+    <tr>
+        <th>Telefone:</th>
+        <td>(22) 2728-6677<br>(22) 2728-7766</td>
+    </tr>
+</table>
+
+<br><br>
+
+<h2>Tabela com Legenda</h2>
+
+<p>Total de despesas por mês</p>
+
+<table>
+    <tr>
+        <th>Mês</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td>Janeiro</td>
+        <td>R$ 1.500,00</td>
+    </tr>
+    <tr>
+        <td>Fevereiro</td>
+        <td>R$ 1.470,00</td>
+    </tr>
+</table>
 
 </body>
 </html>
