@@ -1,18 +1,102 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Exercício 2</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa do Brasil — Mapeamento por Região</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; padding: 1rem; }
+    .wrap { max-width: 920px; margin: 0 auto; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    /* Nota: área do <map> não tem estilo direto; colocamos instruções visuais abaixo */
+    .legenda { margin-top: .8rem; font-size: .95rem; color:#333; }
+    .links { margin-top: .6rem; }
+    .links a { color: rebeccapurple; text-decoration: underline; margin-right: .6rem;}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <h1>Mapa do Brasil — clique ou passe o mouse sobre uma região</h1>
 
-  <h1>Exercício 2</h1>
+    <!-- Imagem do mapa -->
+    <img
+      id="mapaBrasil"
+      src="https://www.infoescola.com/wp-content/uploads/2019/07/mapa-do-brasil-legendado-pintado-regioes.jpg"
+      usemap="#regioes"
+      alt="Mapa do Brasil com regiões (Norte, Nordeste, Centro-Oeste, Sudeste, Sul)"
+      style="max-width:100%; height:auto; display:block; border:1px solid #ccc;"
+    />
+
+    <!-- imagem map -->
+    <map name="regioes" id="regioes">
+      <!-- As coordenadas abaixo são aproximações: ajuste conforme necessário -->
+      <!-- Norte -->
+      <area shape="poly" coords="120,40,170,35,220,40,260,55,300,95,280,130,240,145,200,120,160,95,130,70"
+            href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Norte_do_Brasil"
+            alt="Região Norte" title="Região Norte" data-href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Norte_do_Brasil">
+      <!-- Nordeste -->
+      <area shape="poly" coords="310,60,360,55,410,65,445,95,455,130,430,155,390,150,350,120,320,85"
+            href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Nordeste_do_Brasil"
+            alt="Região Nordeste" title="Região Nordeste" data-href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Nordeste_do_Brasil">
+      <!-- Centro-Oeste -->
+      <area shape="poly" coords="240,150,280,150,320,165,360,190,350,220,310,230,270,225,230,200"
+            href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Centro-Oeste_do_Brasil"
+            alt="Região Centro-Oeste" title="Região Centro-Oeste" data-href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Centro-Oeste_do_Brasil">
+      <!-- Sudeste -->
+      <area shape="poly" coords="360,185,400,175,440,185,470,205,470,235,430,255,390,245,360,220"
+            href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Sudeste_do_Brasil"
+            alt="Região Sudeste" title="Região Sudeste" data-href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Sudeste_do_Brasil">
+      <!-- Sul -->
+      <area shape="poly" coords="360,260,400,265,440,290,460,320,440,350,400,355,360,330,340,295"
+            href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Sul_do_Brasil"
+            alt="Região Sul" title="Região Sul" data-href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Sul_do_Brasil">
+    </map>
+
+    <p class="legenda">Dica: Aponte o mouse sobre a região — você será encaminhado para a página da Wikipédia da região.</p>
+
+    <div class="links">
+      <!-- Links diretos (para teste / acessibilidade) -->
+      <strong>Links diretos:</strong>
+      <a href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Norte_do_Brasil" target="_blank" rel="noopener">Região Norte</a>
+      <a href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Nordeste_do_Brasil" target="_blank" rel="noopener">Região Nordeste</a>
+      <a href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Centro-Oeste_do_Brasil" target="_blank" rel="noopener">Centro-Oeste</a>
+      <a href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Sudeste_do_Brasil" target="_blank" rel="noopener">Sudeste</a>
+      <a href="https://pt.wikipedia.org/wiki/Regi%C3%A3o_Sul_do_Brasil" target="_blank" rel="noopener">Sul</a>
+    </div>
+  </div>
+
+  <script>
+    // Redireciona ao passar o mouse (mouseenter) sobre a área.
+    // Observação: redirecionamento imediato ao passar o mouse pode ser brusco. 
+    //     Se preferir, comente a linha que faz location.href e deixe apenas o clique.
+    (function(){
+      const map = document.getElementById('regioes');
+      if(!map) return;
+      // pega todas as <area> e adiciona mouseenter e click
+      const areas = map.getElementsByTagName('area');
+      for(let i=0;i<areas.length;i++){
+        const a = areas[i];
+        // data-href contém o destino (mesmo que href)
+        const dest = a.dataset.href || a.href;
+        // abrir no clique (padrão do <area> já faz isso, mas garantimos target)
+        a.addEventListener('click', function(e){
+          // abre em nova aba para não tirar o usuário bruscamente
+          window.open(dest, '_blank', 'noopener');
+          e.preventDefault();
+        });
+        // ao passar o mouse — redireciona (abre em nova aba)
+        a.addEventListener('mouseenter', function(e){
+          // abre em nova aba para manter a página atual
+          window.open(dest, '_blank', 'noopener');
+        });
+      }
+    })();
+  </script>
 
   <p>
-    <a href="../../index.html">← Voltar ao Sumário</a>
-  </p>
-
-  <p>Conteúdo do exercício 2...</p>
-
+    <a href="../index.html">Retornar ao Índice</a>
+    </p>
+  
 </body>
 </html>
+
