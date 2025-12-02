@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Formulário de Pedido (Simples)</title>
+</head>
+<body>
+  <h1>Formulário de Pedido</h1>
+
+  <form action="#" method="post">
+    <!--Informações do Cliente-->
+    <fieldset>
+      <legend>Informações do Cliente</legend>
+
+      <label for="nome">Nome Completo *</label><br/>
+      <input id="nome" name="nome" type="text" required autocomplete="name" autofocus><br/><br/>
+
+      <label for="email">Email *</label><br/>
+      <input id="email" name="email" type="email" required autocomplete="email"><br/><br/>
+
+      <label for="telefone">Telefone (Formato: (XX) XXXXX-XXXX) *</label><br/>
+      <input id="telefone" name="telefone" type="tel"
+             pattern="^\(\d{2}\)\s\d{5}-\d{4}$"
+             title="Use o formato (00) 00000-0000"
+             required><br/><br/>
+
+      <label for="senha">Senha (clientes novos) — deixe em branco se já for cliente</label><br/>
+      <input id="senha" name="senha" type="password"
+             minlength="8"
+             pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$"
+             title="Mínimo 8 caracteres, ao menos 1 maiúscula, 1 minúscula e 1 número"><br/><br/>
+
+      <label for="site">Site (opcional)</label><br/>
+      <input id="site" name="site" type="url" placeholder="https://exemplo.com"><br/>
+    </fieldset>
+
+    <!--Detalhes do Pedido-->
+    <fieldset>
+      <legend>Detalhes do Pedido</legend>
+
+      <label for="cor">Cor Preferida</label><br/>
+      <input id="cor" name="cor" type="color" value="#000000"><br/><br/>
+
+      <label for="entrega">Data e Hora de Entrega *</label><br/>
+      <!-- restrição para o ano de 2026 -->
+      <input id="entrega" name="entrega" type="datetime-local" required
+             min="2026-01-01T00:00" max="2026-12-31T23:59"><br/><br/>
+
+      <label for="quantidade">Quantidade (1 a 10)</label><br/>
+      <input id="quantidade" name="quantidade" type="range" min="1" max="10" value="5"><br/><br/>
+
+      <label for="modelo">Modelo de Produto</label><br/>
+      <input id="modelo" name="modelo" list="modelos" placeholder="Escolha ou digite um modelo" spellcheck="true">
+      <datalist id="modelos">
+        <option value="Iphone 17 Pro">
+        <option value="Iphone 17 Pro Max">
+        <option value="Iphone Air">
+      </datalist><br/>
+    </fieldset>
+
+    <!--Opções de Envio-->
+    <fieldset>
+      <legend>Opções de Envio</legend>
+
+      <p>Tipo de Envio:</p>
+      <label><input type="radio" name="envio" value="normal" checked> Envio Normal</label><br/>
+      <label><input type="radio" name="envio" value="expresso"> Envio Expresso</label><br/><br/>
+
+      <label for="comentarios">Comentários (mín. 10 e máx. 300 caracteres) *</label><br/>
+      <textarea id="comentarios" name="comentarios" rows="4" minlength="10" maxlength="300" required spellcheck="true"></textarea>
+    </fieldset>
+
+    <!--Finalização-->
+    <fieldset>
+      <legend>Finalização</legend>
+
+      <label>
+        <input id="termos" name="termos" type="checkbox" required>
+        Eu concordo com os Termos de Serviço *
+      </label><br/><br/>
+
+      <button type="submit">Finalizar Pedido</button>
+    </fieldset>
+  </form>
+</body>
+</html>
